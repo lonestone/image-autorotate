@@ -27,7 +27,7 @@ In your HTML :
       */
       .catch(async () => {
         const url = await reader.getOriginalFileUrl()
-        return { ur, blob: file }
+        return { url, blob: file }
       });
     
   }
