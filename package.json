@@ -1,0 +1,18 @@
+{
+  "name": "image-autorotate",
+  "version": "1.0.0",
+  "description": "rotate image before upload",
+  "main": "./dist/index.js",
+  "repository": "git@github.com:lonestone/image-autorotate.git",
+  "author": "gabriel <gabriel.devlog@gmail.com>",
+  "license": "MIT",
+  "typings": "./dist",
+  "scripts": {
+    "build": "tsc -p ./tsconfig.json"
+  },
+  "devDependencies": {
+    "tslint": "^5.8.0",
+    "tslint-config-standard": "^7.0.0",
+    "typescript": "^2.6.2"
+  }
+}
