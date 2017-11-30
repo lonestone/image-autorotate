@@ -51,10 +51,14 @@ export default class OrientedImage {
   /**
    * Return original file as base 64 url
    * will launch file loading if needed
-   * @return {Promise<string>} fileUrl
+   * @return {Promise<{ur: string, blob: Blob}>}
    */
-  async getOriginalFileUrl() {
-    return this.originalFileUrl !== '' ? this.originalFileUrl : this.loadAsDataUrl();
+  async getOriginalFile() {
+    if (this.originalFileUrl === '' ) {
+      await this.loadAsDataUrl();
+    }
+
+    return { url: this.originalFileUrl, blob: this.originalFile }
   }
 
   /**
@@ -63,18 +67,18 @@ export default class OrientedImage {
    * @return {Promise<{ url: string, blob: Blob}>} fileUrl
    */
   async getFile(): Promise<{ url: string, blob: Blob}> {
-    const base64 = await this.getOriginalFileUrl();
+    const originalFile = await this.getOriginalFile();
     const orientation = await this.getOrientation();
 
     // if image is already up-oriented, no need for calculation
     if (orientation === OrientationTag.Up) {
-      return { url: base64, blob: this.originalFile };
+      return { url: originalFile.url, blob: this.originalFile };
     }
 
     // calculate up-oriented image only once
     return this.upFileUrl !== ''
       ? { url: this.upFileUrl, blob: this.upOrientedfile }
-      : this.calculateUpOrientedImage(base64, orientation);
+      : this.calculateUpOrientedImage(originalFile.url, orientation);
   }
 
   /**

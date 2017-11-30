@@ -23,12 +23,9 @@ In your HTML :
     const { url, blob } = await reader.getFile()
       
       /**
-      * If an error occurs, you can provide the original file instead
+      * If an error occurs, you can provide the original (i.e non rotated with exif) file instead
       */
-      .catch(async () => {
-        const url = await reader.getOriginalFileUrl()
-        return { url, blob: file }
-      });
+      .catch(() => reader.getOriginalFile());
     
   }
 ```

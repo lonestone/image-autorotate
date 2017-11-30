@@ -13,9 +13,12 @@ export default class OrientedImage {
     /**
      * Return original file as base 64 url
      * will launch file loading if needed
-     * @return {Promise<string>} fileUrl
+     * @return {Promise<{ur: string, blob: Blob}>}
      */
-    getOriginalFileUrl(): Promise<string>;
+    getOriginalFile(): Promise<{
+        url: string;
+        blob: File;
+    }>;
     /**
      * Return original file up-oriented as base 64 url
      * will launch file loading & orientation calculation if needed
