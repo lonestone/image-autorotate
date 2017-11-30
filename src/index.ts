@@ -19,6 +19,9 @@ enum OrientationTag {
   RightMirrored = 6
 }
 
+// TODO: Conditionnal import
+import './javascript-canvas-to-blob.min.js'
+
 /**
  * Utility to display image preview as base64 string
  * Provides basic implementation to keep .jepg rotation
