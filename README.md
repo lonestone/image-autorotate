@@ -1,6 +1,6 @@
 # image-autorotate
-An in-browser zero-dependencies image rotation library.
-Upload your image in javascript / typescript and keep it's original orientation if it's a .jpeg
+Upload your pictures in js while keeping orientation. 
+In-browser zero-dependencies library.
 Use lazy calculation, so it's all asynchronous
 
 ## use-case
@@ -10,25 +10,30 @@ In your HTML :
 ```
 
 ```
+  import OrientedImage from 'image-autorotate';
+
   async upload(event) {
     const file = event.target.value;
 
-    const reader = new ImgOriented(file);
+    const reader = new OrientedImage(file);
 
     /**
-    * Use getFile to retrieve the image with orientation
+    * Use getFile() to retrieve the image with orientation
     * - url is the base64 image
     * - blob is the blob corresponding to the file
     */
     const { url, blob } = await reader.getFile()
       
       /**
-      * If an error occurs, you can provide the original (i.e non rotated with exif) file instead
+      * If an error occurs, you can fallback to the original (i.e non rotated with exif) file instead
       */
       .catch(() => reader.getOriginalFile());
     
   }
 ```
 
-## Todo
-check browsers compatibility
+## Tested with
+- Chrome 62
+- Firefox 57
+- IE 11
+- Edge 16
