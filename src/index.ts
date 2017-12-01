@@ -1,3 +1,6 @@
+// polyfill
+import 'blueimp-canvas-to-blob'
+
 /**
  * Image orientation
  * Orientation values (from 1 to 8),
@@ -191,11 +194,6 @@ export default class OrientedImage {
         const height = img.height;
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
-
-        // dynamic import for polyfill
-        if (!canvas.toBlob) {
-          await import('../lib/javascript-canvas-to-blob.min.js')
-        }
 
         // not a valid context for drawing : fallback to original image
         if (!ctx) {

@@ -1,15 +1,15 @@
 # image-autorotate
 Upload your pictures in js while keeping orientation. 
-In-browser zero-dependencies library.
+In-browser library.
 Use lazy calculation, so it's all asynchronous
 
-## use-case
+## Use case
 In your HTML : 
-```
+```html
 <input type="file" onClick="upload()">
 ```
 
-```
+```javascript
   import OrientedImage from 'image-autorotate';
 
   async upload(event) {

@@ -8,12 +8,14 @@
   "license": "MIT",
   "typings": "./dist",
   "scripts": {
-    "build": "tsc -p ./tsconfig.json && cpx lib/javascript-canvas-to-blob.min.js ./dist"
+    "build": "tsc -p ./tsconfig.json"
   },
   "devDependencies": {
-    "cpx": "^1.5.0",
     "tslint": "^5.8.0",
     "tslint-config-standard": "^7.0.0",
     "typescript": "^2.6.2"
+  },
+  "dependencies": {
+    "blueimp-canvas-to-blob": "^3.14.0"
   }
 }
