@@ -6,7 +6,7 @@
     "sourceMap": false,
     "declaration": true,
     "strictNullChecks": true,
-    "lib": ["DOM", "ES5", "ScriptHost", "ES2015"]
+    "lib": ["dom", "es2015"]
   },
   "include": [
     "src/**/*"

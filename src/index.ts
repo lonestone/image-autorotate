@@ -19,9 +19,6 @@ enum OrientationTag {
   RightMirrored = 6
 }
 
-// TODO: Conditionnal import
-import './javascript-canvas-to-blob.min.js'
-
 /**
  * Utility to display image preview as base64 string
  * Provides basic implementation to keep .jepg rotation
@@ -189,11 +186,16 @@ export default class OrientedImage {
     return new Promise<{ url: string, blob: Blob }>((resolve, reject) => {
       const img = new Image();
 
-      img.onload = () => {
+      img.onload = async () => {
         const width = img.width;
         const height = img.height;
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
+
+        // dynamic import for polyfill
+        if (!canvas.toBlob) {
+          await import('../lib/javascript-canvas-to-blob.min.js')
+        }
 
         // not a valid context for drawing : fallback to original image
         if (!ctx) {
